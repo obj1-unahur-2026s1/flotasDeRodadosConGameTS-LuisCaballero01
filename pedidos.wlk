@@ -5,7 +5,7 @@ class Pedido{
     const cantPasajeros
     method velocidadRequerida() = distanciaARecorrer / tiempoMaximoDeViaje
 
-    method puedeSatisfacer(unAuto){
+    method puedeSerSatisfechoPor(unAuto){
         return  unAuto.velocidadMaxima()+10 >= self.velocidadRequerida()+10 &&
                 unAuto.capacidad() >= cantPasajeros &&
                 !coloresIncompatibles.contains(unAuto.color())

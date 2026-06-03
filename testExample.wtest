@@ -82,15 +82,15 @@ describe "tests de Pedidos" {
     const cachito = new Chevrolet(color = "rojo")
   
   test "Cachito puede satisfacer el Pedido1" {
-    assert.that(pedido1.puedeSatisfacer(cachito))
+    assert.that(pedido1.puedeSerSatisfechoPor(cachito))
   }
   test "Cachito no puede satisfacer el Pedido2" {
-    assert.notThat(pedido2.puedeSatisfacer(cachito))
+    assert.notThat(pedido2.puedeSerSatisfechoPor(cachito))
   }
   test "Cachito no puede satisfacer el Pedido3" {
-    assert.notThat(pedido3.puedeSatisfacer(cachito))
+    assert.notThat(pedido3.puedeSerSatisfechoPor(cachito))
   }
   test "Cachito no puede satisfacer el Pedido4" {
-    assert.notThat(pedido4.puedeSatisfacer(cachito))
+    assert.notThat(pedido4.puedeSerSatisfechoPor(cachito))
   }
 }
