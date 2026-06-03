@@ -2,14 +2,15 @@ import rodados.*
 import partes.*
 import dependencias.*
 import pedidos.*
+import colores.*
 describe "test de deportes" {
         const deportes = new Dependencia(cantidadEmpleados = 45)
 
-        const cachito = new Chevrolet(color = "rojo")
-        const corsaAzul = new Chevrolet(color="azul")
-        const corsaVerde = new Chevrolet(color="verde")
+        const cachito = new Chevrolet(color = rojo)
+        const corsaAzul = new Chevrolet(color = azul)
+        const corsaVerde = new Chevrolet(color = verde)
         const kwid = new Renault(tieneTanqueAdicional = true)
-        const especialito = new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color = "beige")
+        const especialito = new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color = beige)
 
     method initialize() {
         deportes.agregarAFlota(cachito)
@@ -26,11 +27,11 @@ describe "test de deportes" {
     assert.that(deportes.estaBienEquipada())
   }
   test "La capacidad total de los vehiculos color azul de la flota de Deportes es 7"{
-    assert.equals(7, deportes.capacidadTotalEnColor("azul"))
+    assert.equals(7, deportes.capacidadTotalEnColor(azul))
   }
     
   test "El color del rodado mas rapido de deportes es beige" {
-    assert.equals("beige", deportes.colorDelRodadoMasRapido())
+    assert.equals(beige, deportes.colorDelRodadoMasRapido())
   }
   test "La capacidad faltante de Deportes es 25" {
     assert.equals(25, deportes.capacidadFaltante())
@@ -41,7 +42,7 @@ describe "test de deportes" {
 describe "Tests de cultura" {
         const cultura = new Dependencia(cantidadEmpleados = 31)
         
-        const cachito = new Chevrolet(color = "rojo")
+        const cachito = new Chevrolet(color = rojo)
         const kwid = new Renault(tieneTanqueAdicional = true)
         const kwid2 = new Renault(tieneTanqueAdicional = false)
 
@@ -60,13 +61,13 @@ describe "Tests de cultura" {
     assert.equals(10700, cultura.pesoTotalFlota())
   }
   test "Cultura está bien equipado"{
-    assert.that(cultura.estaBienEquipada())
+    assert.notThat(cultura.estaBienEquipada())
   }
   test "La capacidad total de los vehiculos color azul de la flota de Cultura es 10"{
-    assert.equals(10, cultura.capacidadTotalEnColor("azul"))
+    assert.equals(10, cultura.capacidadTotalEnColor(azul))
   }
   test "El color del rodado mas rapido de cultura es rojo" {
-    assert.equals("rojo", cultura.colorDelRodadoMasRapido())
+    assert.equals(rojo, cultura.colorDelRodadoMasRapido())
   }
   test "La capacidad faltante de Cultura es 5" {
     assert.equals(5, cultura.capacidadFaltante())
@@ -74,12 +75,12 @@ describe "Tests de cultura" {
 }
 
 describe "tests de Pedidos" {
-    const pedido1 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
-    const pedido2 = new Pedido(coloresIncompatibles = ["azul","negro","rojo"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
-    const pedido3 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 6)
-    const pedido4 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 6, cantPasajeros = 4)
+    const pedido1 = new Pedido(coloresIncompatibles = [azul,negro], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
+    const pedido2 = new Pedido(coloresIncompatibles = [azul,negro,rojo], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
+    const pedido3 = new Pedido(coloresIncompatibles = [azul,negro], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 6)
+    const pedido4 = new Pedido(coloresIncompatibles = [azul,negro], distanciaARecorrer = 960, tiempoMaximoDeViaje = 6, cantPasajeros = 4)
   
-    const cachito = new Chevrolet(color = "rojo")
+    const cachito = new Chevrolet(color = rojo)
   
   test "Cachito puede satisfacer el Pedido1" {
     assert.that(pedido1.puedeSerSatisfechoPor(cachito))

@@ -1,18 +1,26 @@
 import wollok.game.*
-
 import rodados.*
+import colores.*
 
 program PepitaGame {
 	game.title("Pepita")
 	game.height(10)
 	game.width(10)
 
-	// add assets in asset folder, for example, for the background
-  // game.boardGround("fondo2.jpg")
+// Crear los objetos dentro o fuera de game?
+    const cachito = new Chevrolet(color = azul)
 
-	//
+    game.addVisualCharacter(cachito)
 
-	game.showAttributes("pepita") //Debug
+// Hay mejor forma o sí o sí toca poner cada letra así?
+    keyboard.r().onPressDo{cachito.color(rojo)}
+    keyboard.v().onPressDo{cachito.color(verde)}
+    keyboard.a().onPressDo{cachito.color(azul)}
+
+// Para probar si la forma de guardar las posiciones funcionó.
+    keyboard.p().onPressDo{game.say(cachito, cachito.posiciones().toString())}
+
+	// game.showAttributes("pepita") //Debug
 
 	game.start()
 }
