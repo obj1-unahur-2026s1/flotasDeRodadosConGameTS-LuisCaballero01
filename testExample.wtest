@@ -1,9 +1,73 @@
-import example.pepita
+import rodados.*
+import partes.*
+import dependencias.*
+describe "test de deportes" {
+        const deportes = new Dependencia(cantidadEmpleados = 45)
 
-describe "group of tests for pepita" {
+        const cachito = new Chevrolet(color = "rojo")
+        const corsaAzul = new Chevrolet(color="azul")
+        const corsaVerde = new Chevrolet(color="verde")
+        const kwid = new Renault(tieneTanqueAdicional = true)
+        const especialito = new AutoEspecial(capacidad = 5, velocidadMaxima = 160, peso = 1200, color = "beige")
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+    method initialize() {
+        deportes.agregarAFlota(cachito)
+        deportes.agregarAFlota(corsaAzul)
+        deportes.agregarAFlota(corsaVerde)
+        deportes.agregarAFlota(kwid)
+        deportes.agregarAFlota(especialito)
+    }
+
+  test "El peso de la flota de Deportes es 6450" {
+    assert.equals(6450, deportes.pesoTotalFlota())
+  }
+  test "Deportes está bien equipado"{
+    assert.that(deportes.estaBienEquipada())
+  }
+  test "La capacidad total de los vehiculos color azul de la flota de Deportes es 7"{
+    assert.equals(7, deportes.capacidadTotalEnColor("azul"))
+  }
+    
+  test "El color del rodado mas rapido de deportes es beige" {
+    assert.equals("beige", deportes.colorDelRodadoMasRapido())
+  }
+  test "La capacidad faltante de Deportes es 25" {
+    assert.equals(25, deportes.capacidadFaltante())
   }
 
+}
+
+describe "Tests de cultura" {
+        const cultura = new Dependencia(cantidadEmpleados = 31)
+        
+        const cachito = new Chevrolet(color = "rojo")
+        const kwid = new Renault(tieneTanqueAdicional = true)
+        const kwid2 = new Renault(tieneTanqueAdicional = false)
+
+    method initialize() {
+        traffic.cambiarInterior(popular)
+        traffic.cambiarMotor(motorBataton)
+        
+        cultura.agregarAFlota(cachito)
+        cultura.agregarAFlota(kwid)
+        cultura.agregarAFlota(kwid2)
+        cultura.agregarAFlota(kwid)
+        cultura.agregarAFlota(traffic)
+    }
+  
+  test "El peso de la flota de Cultura es 10700" {
+    assert.equals(10700, cultura.pesoTotalFlota())
+  }
+  test "Cultura está bien equipado"{
+    assert.that(cultura.estaBienEquipada())
+  }
+  test "La capacidad total de los vehiculos color azul de la flota de Cultura es 10"{
+    assert.equals(10, cultura.capacidadTotalEnColor("azul"))
+  }
+  test "El color del rodado mas rapido de cultura es rojo" {
+    assert.equals("rojo", cultura.colorDelRodadoMasRapido())
+  }
+  test "La capacidad faltante de Cultura es 5" {
+    assert.equals(5, cultura.capacidadFaltante())
+  }
 }
