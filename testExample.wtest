@@ -1,6 +1,7 @@
 import rodados.*
 import partes.*
 import dependencias.*
+import pedidos.*
 describe "test de deportes" {
         const deportes = new Dependencia(cantidadEmpleados = 45)
 
@@ -69,5 +70,27 @@ describe "Tests de cultura" {
   }
   test "La capacidad faltante de Cultura es 5" {
     assert.equals(5, cultura.capacidadFaltante())
+  }
+}
+
+describe "tests de Pedidos" {
+    const pedido1 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
+    const pedido2 = new Pedido(coloresIncompatibles = ["azul","negro","rojo"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 4)
+    const pedido3 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 8, cantPasajeros = 6)
+    const pedido4 = new Pedido(coloresIncompatibles = ["azul","negro"], distanciaARecorrer = 960, tiempoMaximoDeViaje = 6, cantPasajeros = 4)
+  
+    const cachito = new Chevrolet(color = "rojo")
+  
+  test "Cachito puede satisfacer el Pedido1" {
+    assert.that(pedido1.puedeSatisfacer(cachito))
+  }
+  test "Cachito no puede satisfacer el Pedido2" {
+    assert.notThat(pedido2.puedeSatisfacer(cachito))
+  }
+  test "Cachito no puede satisfacer el Pedido3" {
+    assert.notThat(pedido3.puedeSatisfacer(cachito))
+  }
+  test "Cachito no puede satisfacer el Pedido4" {
+    assert.notThat(pedido4.puedeSatisfacer(cachito))
   }
 }
